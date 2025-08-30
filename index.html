@@ -206,6 +206,20 @@
             transition: transform 0.3s ease;
         }
         
+        .launcher-image {
+            max-width: 100%;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .launcher-image:hover {
+            transform: scale(1.02);
+        }
+        
         .step-image:hover {
             transform: scale(1.05);
         }
@@ -322,7 +336,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="logo">Dreidel Forge</h1>
+            <img src="images/logo.png" alt="Dreidel Forge Logo" style="max-width: 300px; height: auto; margin-bottom: 20px;">
             <p class="tagline">3D Printed Dreidel Assembly & Play Guide</p>
         </div>
         
@@ -424,7 +438,7 @@
                     <div class="step-content">
                         <div class="step-title">Position the Launcher</div>
                         <div class="step-description">Put the launcher handle over the crown. The top of the crown should align perfectly with the hole at the top of the handle.</div>
-                        <img src="images/launcher.png" alt="Position launcher handle" class="step-image">
+                        <img src="images/launcher.png" alt="Position launcher handle" class="launcher-image">
                     </div>
                 </div>
                 
