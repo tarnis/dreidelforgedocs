@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Pricing - Dreidel Forge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8faff 0%, #e8f0ff 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #1e3a8a;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu li a:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu li a.active {
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 3em;
+            font-weight: 300;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .intro-text {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .intro-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            border-radius: 2px;
+        }
+        
+        .intro-text p {
+            font-size: 1.15em;
+            color: #1e293b;
+            line-height: 1.8;
+        }
+        
+        .intro-text strong {
+            color: #1e3a8a;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h2 {
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        
+        .form-header p {
+            color: #64748b;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .form-group label .required {
+            color: #ef4444;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+        
+        .form-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 30px 0;
+                gap: 0;
+            }
+            
+            .nav-menu li {
+                padding: 20px 0;
+            }
+            
+            .nav-menu li a::after {
+                display: none;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-logo {
+                height: 35px;
+            }
+            
+            .container {
+                padding: 100px 15px 40px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .intro-text {
+                padding: 30px 25px;
+            }
+            
+            .form-container {
+                padding: 30px 25px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="images/logo.png" alt="Dreidel Forge"></a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="story.html">The Story</a></li>
+                <li><a href="purchase.html">Purchase</a></li>
+                <li><a href="wholesale.html" class="active">Wholesale Pricing</a></li>
+                <li><a href="build-directions.html">Build Directions</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <div class="container">
+        <div class="intro-text">
+            <p>
+                We offer <strong>special wholesale pricing</strong> for bulk orders of 12 or more dreidels. Perfect for retail stores, synagogues, Hebrew schools, Chanukkah events, and fundraisers. Contact us below to discuss pricing and availability for your specific needs.
+            </p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Request Wholesale Information</h2>
+                <p>Fill out the form below and we'll get back to you shortly</p>
+            </div>
+
+            <form action="https://formsubmit.co/matt0821@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Wholesale Inquiry - Dreidel Forge">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_template" value="table">
+                <!-- Honeypot spam protection -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="organization">Organization/School Name <span class="required">*</span></label>
+                        <input type="text" id="organization" name="organization" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Estimated Quantity Needed <span class="required">*</span></label>
+                    <input type="text" id="quantity" name="quantity" placeholder="e.g., 24 units" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="purpose">Purpose</label>
+                    <select id="purpose" name="purpose">
+                        <option value="">Select purpose</option>
+                        <option value="resale">Retail/Resale</option>
+                        <option value="religious-school">Religious School</option>
+                        <option value="synagogue">Synagogue/Temple</option>
+                        <option value="event">Event/Fundraiser</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Information or Questions</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your needs..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Inquiry</button>
+                
+                <p class="form-note">We'll respond to your inquiry within 1-2 business days</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
