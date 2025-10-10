@@ -124,13 +124,6 @@
             padding: 120px 20px 60px;
         }
         
-        .purchase-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
         .option-card {
             background: white;
             border-radius: 16px;
@@ -138,6 +131,7 @@
             box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
             text-align: center;
             position: relative;
+            margin-bottom: 30px;
         }
         
         .option-card::before {
@@ -183,32 +177,12 @@
         }
         
         .portal-section {
-            background: white;
-            border-radius: 16px;
-            padding: 50px;
-            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
-        }
-        
-        .portal-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .portal-header h2 {
-            font-size: 2em;
-            font-weight: 500;
-            color: #1e3a8a;
-            margin-bottom: 12px;
-        }
-        
-        .portal-header p {
-            color: #64748b;
-            font-size: 1.05em;
+            margin-bottom: 50px;
         }
         
         .portal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
         
@@ -234,10 +208,6 @@
         }
         
         @media (max-width: 968px) {
-            .purchase-options {
-                grid-template-columns: 1fr;
-            }
-            
             .portal-grid {
                 grid-template-columns: 1fr;
             }
@@ -282,8 +252,7 @@
                 padding: 100px 15px 40px;
             }
             
-            .option-card,
-            .portal-section {
+            .option-card {
                 padding: 30px 20px;
             }
         }
@@ -311,20 +280,19 @@
     </nav>
 
     <div class="container">
-        <!-- Two Purchase Options -->
-        <div class="purchase-options">
-            <div class="option-card">
-                <h2>Etsy</h2>
-                <p>Fully Customizable Color Options</p>
-                <a href="https://www.etsy.com/shop/DreidelForge" target="_blank" class="etsy-button">
-                    Shop on Etsy →
-                </a>
-            </div>
+        <!-- Etsy Option -->
+        <div class="option-card">
+            <h2>Etsy</h2>
+            <p>Fully Customizable Color Options</p>
+            <a href="https://www.etsy.com/shop/DreidelForge" target="_blank" class="etsy-button">
+                Shop on Etsy →
+            </a>
+        </div>
 
-            <div class="option-card">
-                <h2>Quick Buy</h2>
-                <p>Preconfigured options at a slight discount</p>
-            </div>
+        <!-- Quick Buy Option -->
+        <div class="option-card">
+            <h2>Quick Buy</h2>
+            <p>Preconfigured options at a slight discount</p>
         </div>
 
         <!-- Portal iframes -->
