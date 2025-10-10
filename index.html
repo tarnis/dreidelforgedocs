@@ -39,12 +39,13 @@
         }
         
         .nav-logo {
-            font-size: 1.5em;
-            font-weight: 600;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-logo img {
+            height: 100%;
+            width: auto;
         }
         
         /* Hamburger Icon */
@@ -319,7 +320,7 @@
             }
             
             .nav-logo {
-                font-size: 1.2em;
+                height: 35px;
             }
         }
     </style>
@@ -328,7 +329,9 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Dreidel Forge</div>
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="Dreidel Forge">
+            </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -348,8 +351,8 @@
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <!-- Replace this src with your actual logo path -->
-            <img src="images/logo.png" alt="Dreidel Forge Logo" class="hero-logo">
+            <!-- Use your white text version of the logo here -->
+            <img src="images/logo-white.png" alt="Dreidel Forge Logo" class="hero-logo">
             <h1 class="hero-tagline">Customizable Premium Dreidels</h1>
             <p class="hero-subtitle">Handcrafted tradition meets modern innovation</p>
             <a href="purchase.html" class="cta-button">Shop Now</a>
