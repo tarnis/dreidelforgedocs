@@ -129,27 +129,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: -2;
-        }
-        
-        /* Animated background pattern */
-        .hero-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
         
         .hero-overlay {
@@ -304,9 +288,6 @@
             <h1 class="hero-tagline">Customizable Premium Dreidels</h1>
             <p class="hero-subtitle">Handcrafted tradition meets modern innovation</p>
             <a href="purchase.html" class="cta-button">Shop Now</a>
-        </div>
-        <div class="scroll-indicator">
-            <span></span>
         </div>
     </section>
 
