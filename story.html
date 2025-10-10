@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Story - Dreidel Forge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8faff 0%, #e8f0ff 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #1e3a8a;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu li a:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu li a.active {
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-title {
+            font-size: 3em;
+            font-weight: 300;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .page-subtitle {
+            color: #64748b;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+        
+        .story-content {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+            position: relative;
+        }
+        
+        .story-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            border-radius: 2px;
+        }
+        
+        .story-text {
+            font-size: 1.15em;
+            color: #1e293b;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+        
+        .story-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 30px;
+            border-left: 4px solid #3b82f6;
+            border-radius: 8px;
+            margin: 32px 0;
+            font-size: 1.1em;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 30px 0;
+                gap: 0;
+            }
+            
+            .nav-menu li {
+                padding: 20px 0;
+            }
+            
+            .nav-menu li a::after {
+                display: none;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-logo {
+                height: 35px;
+            }
+            
+            .container {
+                padding: 100px 15px 40px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .story-content {
+                padding: 30px 25px;
+            }
+            
+            .story-text {
+                font-size: 1.05em;
+            }
+            
+            .highlight {
+                padding: 20px;
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="images/logo.png" alt="Dreidel Forge"></a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="story.html" class="active">The Story</a></li>
+                <li><a href="purchase.html">Purchase</a></li>
+                <li><a href="wholesale.html">Wholesale Pricing</a></li>
+                <li><a href="build-directions.html">Build Directions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">The Story</h1>
+            <p class="page-subtitle">How Dreidel Forge Came to Be</p>
+        </div>
+
+        <div class="story-content">
+            <p class="story-text">
+                During Chanukkah growing up, I always thought it would be cool if dreidels were more substantial than those little plastic ones we got during Hebrew school. Over the years I've seen larger ones, but they were either hollow plastic meant for putting coins in, or decorative wooden ones that never spun well.
+            </p>
+
+            <p class="story-text">
+                Volunteering at my son's Hebrew school, I saw nothing had changed in 35 years. So armed with a career in 3D modeling and a new 3D printer, I decided maybe I could do something about this.
+            </p>
+
+            <p class="story-text">
+                After a year of prototyping and testing with the Hebrew school kids, I've overcome several obstacles to produce something truly manufacturable - eliminating all the non-3D-printed parts that previous designs needed to hold together.
+            </p>
+
+            <div class="highlight">
+                The Dreidel Forge Spinner is currently available in five different color combinations for the main and accent colors, and coming next year I'll be releasing variations to the shape and design that will be interchangeable with the current model!
+            </div>
+
+            <div class="cta-section">
+                <a href="purchase.html" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
