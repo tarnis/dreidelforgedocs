@@ -126,42 +126,6 @@
             padding: 100px 20px 20px; /* Added top padding for fixed navbar */
         }
         
-        .header {
-            text-align: center;
-            padding: 40px 20px 60px;
-            position: relative;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
-            border-radius: 2px;
-        }
-        
-        .logo {
-            font-size: 3.2em;
-            font-weight: 300;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-        
-        .tagline {
-            color: #64748b;
-            font-size: 1.1em;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-        
         .main-content {
             background: white;
             border-radius: 16px;
@@ -437,14 +401,6 @@
                 padding: 90px 10px 10px;
             }
             
-            .header {
-                padding: 30px 15px 40px;
-            }
-            
-            .logo {
-                font-size: 2.5em;
-            }
-            
             .content-section {
                 padding: 24px;
             }
@@ -486,7 +442,8 @@
             </ul>
         </div>
     </nav>
-        
+
+    <div class="container">
         <div class="main-content">
             <div class="content-section">
                 <div class="section-header">
