@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreidel Forge - Assembly & Play Instructions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Hebrew:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8faff 0%, #e8f0ff 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px 60px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            border-radius: 2px;
+        }
+        
+        .logo {
+            font-size: 3.2em;
+            font-weight: 300;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        
+        .tagline {
+            color: #64748b;
+            font-size: 1.1em;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .safety-warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .safety-warning h3 {
+            color: #92400e;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .safety-warning p {
+            color: #78350f;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            padding: 40px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        
+        .section-icon {
+            font-size: 1.8em;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .overview-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .overview-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        
+        .overview-card h4 {
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1.1em;
+            margin-bottom: 6px;
+        }
+        
+        .step-description {
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        
+        .step-image {
+            max-width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .launcher-image {
+            max-width: 100%;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .launcher-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .step-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(30, 58, 138, 0.15);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .video-section h4 {
+            color: #0c4a6e;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .game-rules h4 {
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1.2em;
+        }
+        
+        .hebrew-letters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .hebrew-letter {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.1);
+        }
+        
+        .hebrew-char {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        
+        .hebrew-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        
+        .hebrew-action {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+        
+        .contact-section {
+            background: #f8fafc;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .contact-info {
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .spinning-dreidel {
+            display: inline-block;
+            animation: spin 3s linear infinite;
+            font-size: 1.2em;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 15px 40px;
+            }
+            
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            .content-section {
+                padding: 24px;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            
+            .step-image {
+                max-width: 150px;
+                align-self: center;
+            }
+            
+            .hebrew-letters {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/logo.png" alt="Dreidel Forge Logo" style="max-width: 800px; height: auto; margin-bottom: 20px;">
+            <p class="tagline">Customizable Dreidel Assembly & Play Guide</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">📋</div>
+                    <h2 class="section-title">Overview</h2>
+                </div>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <h4>Age Range</h4>
+                        <p>6+ years</p>
+                    </div>
+                    <div class="overview-card">
+                        <h4>Assembly Time</h4>
+                        <p>5 minutes</p>
+                    </div>
+                    <div class="overview-card">
+                        <h4>Players</h4>
+                        <p>2-8 people</p>
+                    </div>
+                    <div class="overview-card">
+                        <h4>Skill Level</h4>
+                        <p>Beginner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">🔧</div>
+                    <h2 class="section-title">Assembly Instructions</h2>
+                </div>
+
+                <div class="video-section">
+                    <h4>🎥 Watch the Assembly Video</h4>
+                    <p style="color: #64748b; margin-bottom: 16px;">Follow along with this step-by-step video guide for easy assembly</p>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/AUmYRbGZgRs" 
+                            title="Dreidel Forge Assembly Video"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Insert the Spring Clip</div>
+                        <div class="step-description">Take the rectangular spring clip and push it into the square hole at the top of the dreidel core until it clicks securely in place.</div>
+                        <img src="images/step1.png" alt="Insert spring clip into dreidel core" class="step-image">
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Add Hebrew Letter Tiles</div>
+                        <div class="step-description">Match each Hebrew letter tile with the corresponding etched letters in the slots. Gently slide each tile into its matching slot until secure.</div>
+                        <img src="images/step2.png" alt="Insert Hebrew letter tiles" class="step-image">
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Attach the Crown Top</div>
+                        <div class="step-description">Place the crown piece on the back side of the spring clip and press down firmly. You should feel it snap into place with a satisfying click!</div>
+                        <img src="images/step3.png" alt="Attach crown top piece" class="step-image">
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Add Bottom Spring Clip</div>
+                        <div class="step-description">Insert the second spring clip into the bottom of the dreidel core, pushing until it's completely secure.</div>
+                        <img src="images/step4.png" alt="Insert bottom spring clip" class="step-image">
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Attach Spinner Base</div>
+                        <div class="step-description">Press the spinner base into the bottom spring clip until you hear it snap into place. Your dreidel is now fully assembled!</div>
+                        <img src="images/step5.png" alt="Attach spinner base" class="step-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <h2 class="section-title">Using the Launcher</h2>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Set Up the Dreidel</div>
+                        <div class="step-description">Place your assembled dreidel spinner-side down on a hard, flat surface.</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Position the Launcher</div>
+                        <div class="step-description">Put the launcher handle over the crown. The top of the crown should align perfectly with the hole at the top of the handle.</div>
+                        <img src="images/launcher.png" alt="Position launcher handle" class="launcher-image">
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Insert Zip Stick</div>
+                        <div class="step-description">Slide the zip stick into the hole on the side of the handle, making sure the gears face toward the crown.</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Launch & Spin!</div>
+                        <div class="step-description">Quickly pull the zip stick straight out while lifting the handle up and away. Watch your dreidel spin! <span class="spinning-dreidel">🔄</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">🎮</div>
+                    <h2 class="section-title">How to Play Dreidel</h2>
+                </div>
+                
+                <div class="game-rules">
+                    <h4>Hebrew Letters & Their Meanings</h4>
+                    <div class="hebrew-letters">
+                        <div class="hebrew-letter">
+                            <div class="hebrew-char">נ</div>
+                            <div class="hebrew-name">Nun</div>
+                            <div class="hebrew-action">"Nothing" - No action</div>
+                        </div>
+                        <div class="hebrew-letter">
+                            <div class="hebrew-char">ג</div>
+                            <div class="hebrew-name">Gimel</div>
+                            <div class="hebrew-action">"Get all" - Take everything!</div>
+                        </div>
+                        <div class="hebrew-letter">
+                            <div class="hebrew-char">ה</div>
+                            <div class="hebrew-name">Hei</div>
+                            <div class="hebrew-action">"Half" - Take half the pot</div>
+                        </div>
+                        <div class="hebrew-letter">
+                            <div class="hebrew-char">ש</div>
+                            <div class="hebrew-name">Shin</div>
+                            <div class="hebrew-action">"Share" - Add one to pot</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">What You Need</div>
+                        <div class="step-description">Coins, candies, tokens, or small toys to use as game pieces (about 10-15 per player).</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Game Setup</div>
+                        <div class="step-description">Each player starts with the same number of game pieces. Everyone puts one piece in the center to create the "pot."</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Taking Turns</div>
+                        <div class="step-description">Players take turns spinning the dreidel and follow what the Hebrew letter tells them to do.</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Winning the Game</div>
+                        <div class="step-description">The game continues until one player has won everything, or you can set a time limit and see who has the most pieces!</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Keep It Fun</div>
+                        <div class="step-description">If the pot gets empty, everyone adds one more piece to keep the game going!</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section contact-section">
+                <h3>Need Help or Have Questions?</h3>
+                <div class="contact-info"><strong>Email:</strong> help@dreidleforge.com</div>
+                <div class="contact-info"><strong>Assembly Tips:</strong> If pieces don't fit easily, check orientation. The dreidel should spin smoothly when properly assembled!</div>
+                <div class="contact-info"><strong>Troubleshooting:</strong> Make sure all clips are fully engaged and Hebrew tiles are properly seated in their slots.  Gently pull spring clips with a small pair of pliers if they need to be removed.</div>
+            </div>
+            
+            <div class="safety-warning">
+                <h3>⚠️ Safety Warning</h3>
+                <p><strong>CHOKING HAZARD - Small parts.</strong> Not suitable for children under 3 years. Adult supervision recommended for children under 8 years.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
