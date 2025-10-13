@@ -127,9 +127,8 @@
         .shop-section {
             background: white;
             border-radius: 16px;
-            padding: 60px 50px;
+            padding: 40px 30px;
             box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
-            text-align: center;
             position: relative;
         }
         
@@ -145,71 +144,23 @@
             border-radius: 2px;
         }
         
-        .shop-section h2 {
-            font-size: 2.5em;
-            font-weight: 500;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
+        .shop-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
         
-        .shop-section p {
-            color: #64748b;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .feature {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 25px;
-            border-radius: 12px;
-            border: 2px solid #3b82f6;
-        }
-        
-        .feature-icon {
+        .shop-header h2 {
             font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
-        .feature h3 {
+            font-weight: 500;
             color: #1e3a8a;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 12px;
         }
         
-        .feature p {
-            color: #1e293b;
-            font-size: 0.95em;
-            margin: 0;
-        }
-        
-        .shop-button {
-            display: inline-block;
-            padding: 18px 50px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2em;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-        }
-        
-        .shop-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        .shop-iframe {
+            width: 100%;
+            height: 1000px;
+            border: none;
+            border-radius: 8px;
         }
         
         @media (max-width: 768px) {
@@ -252,19 +203,11 @@
             }
             
             .shop-section {
-                padding: 40px 25px;
+                padding: 30px 20px;
             }
             
-            .shop-section h2 {
-                font-size: 2em;
-            }
-            
-            .shop-section p {
-                font-size: 1.05em;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
+            .shop-header h2 {
+                font-size: 1.5em;
             }
         }
     </style>
@@ -292,25 +235,11 @@
 
     <div class="container">
         <div class="shop-section">
-            <h2>Shop Dreidel Forge</h2>
-            <p>Fully customizable premium dreidels with interchangeable parts and multiple color options</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Full Customization</h3>
-                    <p>Choose from multiple color combinations</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Quality Made</h3>
-                    <p>3D printed with precision and care</p>
-                </div>
+            <div class="shop-header">
+                <h2>Home | Dreidel Forge</h2>
             </div>
             
-            <a href="https://dreidelforge.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="shop-button">
-                Visit Shop →
-            </a>
+            <iframe src="https://dreidelforge.square.site/s/shop" class="shop-iframe" title="Dreidel Forge Shop"></iframe>
         </div>
     </div>
 
