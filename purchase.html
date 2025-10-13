@@ -119,22 +119,21 @@
         }
         
         .container {
-            max-width: 1100px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 120px 20px 60px;
         }
         
-        .option-card {
+        .shop-section {
             background: white;
             border-radius: 16px;
-            padding: 40px;
+            padding: 60px 50px;
             box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
             text-align: center;
             position: relative;
-            margin-bottom: 30px;
         }
         
-        .option-card::before {
+        .shop-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -146,70 +145,71 @@
             border-radius: 2px;
         }
         
-        .option-card h2 {
-            font-size: 1.8em;
-            color: #1e3a8a;
-            margin-bottom: 15px;
+        .shop-section h2 {
+            font-size: 2.5em;
+            font-weight: 500;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
         }
         
-        .option-card p {
+        .shop-section p {
             color: #64748b;
-            font-size: 1.1em;
-            margin-bottom: 30px;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
         
-        .etsy-button {
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #3b82f6;
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .feature h3 {
+            color: #1e3a8a;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .feature p {
+            color: #1e293b;
+            font-size: 0.95em;
+            margin: 0;
+        }
+        
+        .shop-button {
             display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, #f56a00, #ff8f3d);
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.2em;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(245, 106, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
         }
         
-        .etsy-button:hover {
+        .shop-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 106, 0, 0.4);
-        }
-        
-        .portal-section {
-            margin-bottom: 50px;
-        }
-        
-        .portal-grid {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .portal-item {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 20px;
-            border: 2px solid #e2e8f0;
-        }
-        
-        .portal-item h3 {
-            color: #1e3a8a;
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-        
-        .portal-item iframe {
-            width: 100%;
-            height: 800px;
-            border: none;
-            border-radius: 8px;
-        }
-        
-        @media (max-width: 968px) {
-            .portal-grid {
-                max-width: 100%;
-            }
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
         }
         
         @media (max-width: 768px) {
@@ -251,8 +251,20 @@
                 padding: 100px 15px 40px;
             }
             
-            .option-card {
-                padding: 30px 20px;
+            .shop-section {
+                padding: 40px 25px;
+            }
+            
+            .shop-section h2 {
+                font-size: 2em;
+            }
+            
+            .shop-section p {
+                font-size: 1.05em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -279,29 +291,26 @@
     </nav>
 
     <div class="container">
-        <!-- Etsy Option -->
-        <div class="option-card">
-            <h2>Etsy</h2>
-            <p>Fully Customizable Color Options</p>
-            <a href="https://www.etsy.com/shop/DreidelForge" target="_blank" class="etsy-button">
-                Shop on Etsy →
-            </a>
-        </div>
-
-        <!-- Quick Buy Option -->
-        <div class="option-card">
-            <h2>Quick Buy</h2>
-            <p>Preconfigured options at a slight discount</p>
-        </div>
-
-        <!-- Portal iframes -->
-        <div class="portal-section">
-            <div class="portal-grid">
-                <div class="portal-item">
-                    <h3>Blue + Black</h3>
-                    <iframe title="Dreidel Forge Blue Black" src="https://teleportpod.com/portal/ab4a9e0e-f48a-463f-b917-35e6889d8b04?item=1142"></iframe>
+        <div class="shop-section">
+            <h2>Shop Dreidel Forge</h2>
+            <p>Fully customizable premium dreidels with interchangeable parts and multiple color options</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Full Customization</h3>
+                    <p>Choose from multiple color combinations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quality Made</h3>
+                    <p>3D printed with precision and care</p>
                 </div>
             </div>
+            
+            <a href="https://dreidelforge.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="shop-button">
+                Visit Shop →
+            </a>
         </div>
     </div>
 
