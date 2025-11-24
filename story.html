@@ -211,6 +211,61 @@
             box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
         }
         
+        .videos-section {
+            margin-top: 60px;
+        }
+        
+        .videos-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .videos-header h2 {
+            font-size: 2em;
+            font-weight: 500;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .video-container.short {
+            padding-bottom: 177.78%; /* 9:16 aspect ratio for shorts */
+            max-width: 315px;
+            margin: 0 auto;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         /* Footer */
         .footer {
             background: white;
@@ -376,7 +431,37 @@
             <div class="highlight">
                 The Dreidel Forge Spinner is currently available in five different color combinations for the main and accent colors, and coming next year I'll be releasing variations to the shape and design that will be interchangeable with the current model!
             </div>
-
+        </div>
+        
+        <!-- Videos Section -->
+        <div class="videos-section">
+            <div class="videos-header">
+                <h2>Watch the Journey</h2>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Hc0BuQlr6dE" title="Dreidel Forge Video 1" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Wy7gLlXyQTE" title="Dreidel Forge Video 2" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-container short">
+                        <iframe src="https://www.youtube.com/embed/t0nObKGA9iA" title="Dreidel Forge Short" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="story-content">
             <div class="cta-section">
                 <a href="purchase.html" class="cta-button">Shop Now</a>
             </div>
