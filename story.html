@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Story - Dreidel Forge</title>
+    <title>Wholesale Pricing - Dreidel Forge</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -119,14 +119,14 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 120px 20px 60px;
         }
         
         .page-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .page-title {
@@ -136,25 +136,21 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
         }
         
-        .page-subtitle {
-            color: #64748b;
-            font-size: 1.2em;
-            font-weight: 400;
-        }
-        
-        .story-content {
+        .intro-text {
             background: white;
+            padding: 40px;
             border-radius: 16px;
-            padding: 50px;
             box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+            margin-bottom: 40px;
+            text-align: center;
             position: relative;
         }
         
-        .story-content::before {
+        .intro-text::before {
             content: '';
             position: absolute;
             top: 0;
@@ -166,49 +162,109 @@
             border-radius: 2px;
         }
         
-        .story-text {
+        .intro-text p {
             font-size: 1.15em;
             color: #1e293b;
-            line-height: 1.9;
+            line-height: 1.8;
+        }
+        
+        .intro-text strong {
+            color: #1e3a8a;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h2 {
+            font-size: 1.8em;
+            font-weight: 500;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        
+        .form-header p {
+            color: #64748b;
+        }
+        
+        .form-group {
             margin-bottom: 24px;
         }
         
-        .story-text:last-child {
-            margin-bottom: 0;
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 0.95em;
         }
         
-        .highlight {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 30px;
-            border-left: 4px solid #3b82f6;
+        .form-group label .required {
+            color: #ef4444;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
-            margin: 32px 0;
-            font-size: 1.1em;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
         }
         
-        .cta-section {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 40px;
-            border-top: 1px solid #e2e8f0;
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
         }
         
-        .cta-button {
-            display: inline-block;
-            padding: 16px 40px;
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 16px;
             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
-            text-decoration: none;
+            border: none;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 1.1em;
-            border-radius: 50px;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
         }
         
-        .cta-button:hover {
+        .submit-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+        
+        .form-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 16px;
         }
         
         /* Footer */
@@ -323,17 +379,17 @@
                 font-size: 2.2em;
             }
             
-            .story-content {
+            .intro-text {
                 padding: 30px 25px;
             }
             
-            .story-text {
-                font-size: 1.05em;
+            .form-container {
+                padding: 30px 25px;
             }
             
-            .highlight {
-                padding: 20px;
-                font-size: 1.05em;
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
         }
     </style>
@@ -351,35 +407,85 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="story.html" class="active">The Story</a></li>
+                <li><a href="story.html">The Story</a></li>
                 <li><a href="purchase.html">Purchase</a></li>
-                <li><a href="wholesale.html">Wholesale Pricing</a></li>
+                <li><a href="wholesale.html" class="active">Wholesale Pricing</a></li>
                 <li><a href="build-directions.html">Build Directions</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <div class="story-content">
-            <p class="story-text">
-                During Chanukkah growing up, I always thought it would be cool if dreidels were more substantial than those little plastic ones we got during Hebrew school. Over the years I've seen larger ones, but they were either hollow plastic meant for putting coins in, or decorative wooden ones that never spun well.
+        <div class="intro-text">
+            <p>
+                We offer <strong>special wholesale pricing</strong> for bulk orders of 12 or more dreidels. Perfect for retail stores, synagogues, Hebrew schools, Chanukkah events, and fundraisers. Contact us below to discuss pricing and availability for your specific needs.
             </p>
+        </div>
 
-            <p class="story-text">
-                Volunteering at my son's Hebrew school, I saw nothing had changed in 35 years. So armed with a career in 3D modeling and a new 3D printer, I decided maybe I could do something about this.
-            </p>
-
-            <p class="story-text">
-                After a year of prototyping and testing with the Hebrew school kids, I've overcome several obstacles to produce something truly manufacturable - eliminating all the non-3D-printed parts that previous designs needed to hold together.
-            </p>
-
-            <div class="highlight">
-                The Dreidel Forge Spinner is currently available in five different color combinations for the main and accent colors, and coming next year I'll be releasing variations to the shape and design that will be interchangeable with the current model!
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Request Wholesale Information</h2>
+                <p>Fill out the form below and we'll get back to you shortly</p>
             </div>
 
-            <div class="cta-section">
-                <a href="purchase.html" class="cta-button">Shop Now</a>
-            </div>
+            <form action="https://formsubmit.co/matt0821@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Wholesale Inquiry - Dreidel Forge">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_template" value="table">
+                <!-- Honeypot spam protection -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="organization">Organization/School Name <span class="required">*</span></label>
+                        <input type="text" id="organization" name="organization" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Estimated Quantity Needed <span class="required">*</span></label>
+                    <input type="text" id="quantity" name="quantity" placeholder="e.g., 24 units" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="purpose">Purpose</label>
+                    <select id="purpose" name="purpose">
+                        <option value="">Select purpose</option>
+                        <option value="resale">Retail/Resale</option>
+                        <option value="religious-school">Religious School</option>
+                        <option value="synagogue">Synagogue/Temple</option>
+                        <option value="event">Event/Fundraiser</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Information or Questions</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your needs..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Inquiry</button>
+                
+                <p class="form-note">We'll respond to your inquiry within 1-2 business days</p>
+            </form>
         </div>
     </div>
 
